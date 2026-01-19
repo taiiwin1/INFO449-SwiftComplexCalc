@@ -28,6 +28,79 @@ print("Welcome back to the UW Calculator")
 //: IMPORTANT: If any tests are commented out, you will be graded a zero (0)! You should never be in the habit of eliminating tests to make the code pass.
 //:
 class Calculator {
+    // value inputs
+    func add(lhs: Int, rhs: Int) -> Int {
+        return lhs + rhs
+    }
+    func subtract(lhs: Int, rhs: Int) -> Int {
+        return lhs - rhs
+    }
+    func multiply(lhs: Int, rhs: Int) -> Int {
+        return lhs * rhs
+    }
+    func divide(lhs: Int, rhs: Int) -> Int {
+        return lhs / rhs
+    }
+    
+    // arr inputs
+    func add(_ args: [Int]) -> Int {
+        var res = 0;
+        for x in args {
+            res += x
+        }
+        return res
+    }
+    func multiply(_ args: [Int]) -> Int {
+        var res = 1;
+        for x in args {
+            res *= x
+        }
+        return res;
+    }
+    func count(_ args: [Int]) -> Int {
+        return args.count
+    }
+    func avg(_ args: [Int]) -> Int {
+        var count = 0;
+        for x in args {
+            count += x
+        }
+        return count / args.count
+    }
+    
+    // tuple paris inputs
+    func add(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+        return (lhs.0 + rhs.0, rhs.1 + rhs.1)
+    }
+    func subtract(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+        return (lhs.0 - rhs.0, rhs.1 - rhs.1)
+    }
+    
+    // dictionary inputs
+    func add(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
+        let newX = (lhs["x"] ?? 0) + (rhs["x"] ?? 0)
+        let newY = (lhs["y"] ?? 0) + (rhs["y"] ?? 0)
+        return ["x": newX, "y": newY]
+    }
+    func subtract(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
+        let newX = (lhs["x"] ?? 0) - (rhs["x"] ?? 0)
+        let newY = (lhs["y"] ?? 0) - (rhs["y"] ?? 0)
+        return ["x": newX, "y": newY]
+    }
+    
+    // mathOp v1, takes 2 int and the paramater func
+    func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> Int) -> Int {
+            return op(lhs, rhs)
+    }
+    
+    // mathOp v2, takes in arr, starting val, and paramater func
+    func mathOp(args: [Int], beg: Int, op: (Int, Int) -> Int) -> Int {
+        var result = beg
+        for num in args {
+            result = op(result, num)
+        }
+        return result
+    }
 }
 
 //: Don't change the name of this object (`calc`); it's used in all the tests.
